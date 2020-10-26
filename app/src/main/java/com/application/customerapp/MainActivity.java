@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.application.customerapp.utils.heplers;
 import com.application.customerapp.utils.scannerActivity;
 import com.application.customerapp.utils.signaturePad;
 import com.google.zxing.BarcodeFormat;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         scanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(verfiycameraperms(activity)){
+                if(verfiycameraperms()){
                     startActivity(new Intent(getApplicationContext(), scannerActivity.class));
                 }
             }
@@ -85,8 +86,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    public  boolean verfiycameraperms(Activity activity) {
+    public  boolean verfiycameraperms() {
         int perms = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
 
         if (perms != PackageManager.PERMISSION_GRANTED) {
@@ -100,4 +100,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     }
+
+
+
 }

@@ -37,7 +37,9 @@ public class scannerActivity extends AppCompatActivity implements ZXingScannerVi
         Toast.makeText(this, result.getText(), Toast.LENGTH_SHORT).show();
         if(result.getText().equals("data")){
             scannerView.stopCamera();
-            startActivity(new Intent(getApplicationContext(),registrationForm.class));
+            Intent intent = new Intent(getApplicationContext(),registrationForm.class);
+            intent.putExtra("childData",result.getText());
+            startActivity(intent);
         }else{
             scannerView.resumeCameraPreview(this);
         }

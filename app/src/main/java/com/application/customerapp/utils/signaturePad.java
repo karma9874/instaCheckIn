@@ -2,6 +2,7 @@ package com.application.customerapp.utils;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +27,7 @@ public class signaturePad extends AppCompatActivity {
         signaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
             @Override
             public void onStartSigning() {
-                Toast.makeText(getApplicationContext(), "OnStartSigning", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "OnStartSigning", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -49,6 +50,16 @@ public class signaturePad extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 signaturePad.clear();
+            }
+        });
+
+        mSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bitmap signatureBitmap = signaturePad.getSignatureBitmap();
+                if(signatureBitmap!=null){
+                    Toast.makeText(signaturePad.this, "Noice", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

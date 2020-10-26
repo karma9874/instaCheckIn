@@ -130,6 +130,7 @@
 
             <EditText
                 android:id="@+id/emailedit"
+                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/emailbanner"
@@ -151,6 +152,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:inputType="phone"
                 android:id="@+id/phoneedit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -173,6 +175,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:inputType="textLongMessage"
                 android:id="@+id/addressedit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -215,7 +218,7 @@
                 android:layout_marginLeft="78dp"
                 android:layout_marginTop="3dp"
                 android:layout_toRightOf="@+id/adultsInfo"
-                app:srcCompat="@drawable/add" />
+                app:srcCompat="@drawable/minus" />
 
 
             <ImageButton
@@ -226,7 +229,7 @@
                 android:layout_marginLeft="38dp"
                 android:layout_marginTop="3dp"
                 android:layout_toRightOf="@+id/plus1"
-                app:srcCompat="@drawable/minus" />
+                app:srcCompat="@drawable/add" />
 
             <TextView
                 android:id="@+id/childinfo"
@@ -247,7 +250,7 @@
                 android:layout_marginLeft="78dp"
                 android:layout_marginTop="3dp"
                 android:layout_toRightOf="@+id/adultsInfo"
-                app:srcCompat="@drawable/add" />
+                app:srcCompat="@drawable/minus" />
 
             <ImageButton
                 android:id="@+id/minus2"
@@ -257,7 +260,7 @@
                 android:layout_marginLeft="39dp"
                 android:layout_marginTop="1dp"
                 android:layout_toRightOf="@+id/plus2"
-                app:srcCompat="@drawable/minus" />
+                app:srcCompat="@drawable/add" />
 
             <TextView
                 android:id="@+id/checkinfo"
@@ -280,7 +283,7 @@
                 android:id="@+id/counter1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
+                android:text="0"
                 />
 
             <TextView
@@ -291,7 +294,7 @@
                 android:layout_toRightOf="@id/plus2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
+                android:text="0"
                 />
 
             <TextView
