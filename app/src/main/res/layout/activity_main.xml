@@ -33,20 +33,11 @@
         android:id="@+id/imageview"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="108dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <Button
-        android:id="@+id/signature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:text="Signature"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qr_generate" />
 </androidx.constraintlayout.widget.ConstraintLayout>

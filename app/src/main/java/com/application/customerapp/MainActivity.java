@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_CAMERA = 1;
     Activity activity;
-    Button scanner,generator,signature;
+    Button scanner,generator;
     ImageView imageView;
 
     @Override
@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         scanner = findViewById(R.id.qr_scanner);
         generator = findViewById(R.id.qr_generate);
         imageView = findViewById(R.id.imageview);
-        signature = findViewById(R.id.signature);
 
         scanner.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,14 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 QRCodeButton("data");
             }
         });
-
-        signature.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), signaturePad.class));
-            }
-        });
-
     }
 
     public void QRCodeButton(String data){

@@ -2,9 +2,9 @@ package com.application.customerapp.utils;
 
 public class regisObj {
 
-    String fname,lname,email,address,gender,phone,adults,children,checkin,checkout;
+    String fname,lname,email,address,gender,phone,adults,children,checkin,checkout,idurl,sigurl;
 
-    public regisObj(String fname, String lname, String email, String address, String gender, String phone,String adults, String children, String checkin, String checkout) {
+    public regisObj(String fname, String lname, String email, String address, String gender, String phone,String adults, String children, String checkin, String checkout,String idurl,String sigurl) {
         this.fname = fname;
         this.lname = lname;
         this.email = email;
@@ -15,6 +15,8 @@ public class regisObj {
         this.children = children;
         this.checkin = checkin;
         this.checkout = checkout;
+        this.idurl = idurl;
+        this.sigurl = sigurl;
     }
 
 
@@ -24,6 +26,23 @@ public class regisObj {
 
     public void setFname(String fname) {
         this.fname = fname;
+    }
+
+    public String getSigurl() {
+        return sigurl;
+    }
+
+    public void setSigurl(String sigurl) {
+        this.fname = sigurl;
+    }
+
+
+    public String getIdurl() {
+        return idurl;
+    }
+
+    public void setIdurl(String idurl) {
+        this.idurl = idurl;
     }
 
     public String getPhone() {

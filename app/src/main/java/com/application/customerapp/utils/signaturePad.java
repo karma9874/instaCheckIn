@@ -1,20 +1,37 @@
 package com.application.customerapp.utils;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.application.customerapp.MainActivity;
 import com.application.customerapp.R;
 import com.github.gcacace.signaturepad.views.SignaturePad;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class signaturePad extends AppCompatActivity {
 
     SignaturePad signaturePad;
     Button mClearButton,mSaveButton;
+    static String sigImage="";
+
+    String fname,lname,address,phone,email,checkin,checkout,gender,imageURL,counter1,counter2,childData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +40,18 @@ public class signaturePad extends AppCompatActivity {
 
         signaturePad = (SignaturePad) findViewById(R.id.signature_pad);
 
-
+         fname = getIntent().getStringExtra("fname");
+         lname = getIntent().getStringExtra("lname");
+         address = getIntent().getStringExtra("address");
+         phone = getIntent().getStringExtra("phone");
+         email = getIntent().getStringExtra("email");
+         checkin = getIntent().getStringExtra("checkin");
+         checkout = getIntent().getStringExtra("checkout");
+         gender = getIntent().getStringExtra("gender");
+         imageURL = getIntent().getStringExtra("imageURL");
+         counter1 = getIntent().getStringExtra("counter1");
+         counter2 = getIntent().getStringExtra("counter2");
+        childData = getIntent().getStringExtra("childData");
         signaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
             @Override
             public void onStartSigning() {
@@ -57,8 +85,40 @@ public class signaturePad extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Bitmap signatureBitmap = signaturePad.getSignatureBitmap();
+
+                ProgressDialog pd = new ProgressDialog(signaturePad.this);
+                pd.setMessage("Uploading Signature");
+                pd.setCancelable(false);
+                pd.show();
+
                 if(signatureBitmap!=null){
-                    Toast.makeText(signaturePad.this, "Noice", Toast.LENGTH_SHORT).show();
+                    StorageReference fileRef = FirebaseStorage.getInstance().getReference().child("uploads").child(System.currentTimeMillis()+".jpeg");
+
+                    Uri uri = new heplers().getImageUri(getApplicationContext(),signatureBitmap);
+                    fileRef.putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                            fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    String url = uri.toString();
+                                    sigImage = url;
+                                    Log.d("uploaded",url);
+                                    pd.dismiss();
+                                    Log.d("adad",childData);
+                                    DatabaseReference dref = FirebaseDatabase.getInstance().getReference("submissionForm").child(childData);
+                                    dref.push().setValue(new regisObj(fname,lname,email,address,gender,phone,counter1,counter2,checkin,checkout,imageURL,sigImage));
+                                    Toast.makeText(signaturePad.this, "Submitted", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                }
+                            });
+                        }
+                    });
+                    //
+
+
                 }
             }
         });
