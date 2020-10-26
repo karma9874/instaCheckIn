@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         generator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                QRCodeButton();
+                QRCodeButton("data");
             }
         });
 
@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void QRCodeButton(){
+    public void QRCodeButton(String data){
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         try {
-            BitMatrix bitMatrix = qrCodeWriter.encode("data", BarcodeFormat.QR_CODE, 200, 200);
+            BitMatrix bitMatrix = qrCodeWriter.encode(data, BarcodeFormat.QR_CODE, 200, 200);
             Bitmap bitmap = Bitmap.createBitmap(200, 200, Bitmap.Config.RGB_565);
             for (int x = 0; x<200; x++){
                 for (int y=0; y<200; y++){
@@ -84,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-
 
 
     public  boolean verfiycameraperms(Activity activity) {

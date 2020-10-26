@@ -11,12 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomerAPP">
-        <activity android:name=".utils.signaturePad"></activity>
+        <activity android:name=".utils.registrationForm"></activity>
+        <activity android:name=".utils.signaturePad" />
         <activity android:name=".utils.scannerActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

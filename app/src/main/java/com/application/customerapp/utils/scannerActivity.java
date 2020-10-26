@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,14 +29,19 @@ public class scannerActivity extends AppCompatActivity implements ZXingScannerVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanner);
         scannerView = (ZXingScannerView) findViewById(R.id.scannerview);
-
     }
 
     @Override
     public void handleResult(Result result) {
         Log.d("QRCodeScanner", result.getText());
         Toast.makeText(this, result.getText(), Toast.LENGTH_SHORT).show();
-        scannerView.resumeCameraPreview(this);
+        if(result.getText().equals("data")){
+            scannerView.stopCamera();
+            startActivity(new Intent(getApplicationContext(),registrationForm.class));
+        }else{
+            scannerView.resumeCameraPreview(this);
+        }
+//        scannerView.resumeCameraPreview(this);
     }
 
     @Override

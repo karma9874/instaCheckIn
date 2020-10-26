@@ -36,7 +36,6 @@
         <com.github.gcacace.signaturepad.views.SignaturePad
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            signature:penColor="@color/white"
             android:id="@+id/signature_pad" />
     </RelativeLayout>
 
