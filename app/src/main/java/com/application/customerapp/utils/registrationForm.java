@@ -16,10 +16,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -36,6 +38,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.regex.Pattern;
 
 public class registrationForm extends AppCompatActivity {
 
@@ -51,6 +54,9 @@ public class registrationForm extends AppCompatActivity {
     DatabaseReference dref;
     static String imageURL = "";
     String childData;
+    RadioButton r1,r2;
+    String sexString;
+    ImageView done;
     private static final int CAMERA_REQUEST = 420;
 
     ImageButton plus1,plus2,minus1,minus2;
@@ -63,7 +69,7 @@ public class registrationForm extends AppCompatActivity {
         child = findViewById(R.id.counter2);
         ci = findViewById(R.id.checkinDate);
         co = findViewById(R.id.checkoutdate);
-
+        done = findViewById(R.id.doneupload);
         submit = findViewById(R.id.savebutton);
         fname = findViewById(R.id.fnameedit);
         lname = findViewById(R.id.lnameedit);
@@ -78,9 +84,12 @@ public class registrationForm extends AppCompatActivity {
         minus2 = findViewById(R.id.minus2);
 
 
+        r1 = findViewById(R.id.maleRadioButton);
+        r2 = findViewById(R.id.femaleRadioButton);
+
         uploadbutton = findViewById(R.id.uploadbutton);
 
-
+        done.setVisibility(View.INVISIBLE);
         uploadbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,8 +139,6 @@ public class registrationForm extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(!fname.getText().toString().isEmpty() && !lname.getText().toString().isEmpty() && !address.getText().toString().isEmpty()
-//                && !phone.getText().toString().isEmpty()){
 
                 String fnameString = fname.getText().toString();
                 String lnameString = lname.getText().toString();
@@ -140,30 +147,84 @@ public class registrationForm extends AppCompatActivity {
                 String emailString = email.getText().toString();
                 String checkinDate = ci.getText().toString();
                 String checkoutDate = co.getText().toString();
-                int selected=sex.getCheckedRadioButtonId();
-                RadioButton gender=(RadioButton) findViewById(selected);
-                String sexString = gender.getText().toString();
+
 
                 Log.d("adadad",fnameString+lnameString+addressString+phoneString);
 
-                Intent intent = new Intent(getApplicationContext(),signaturePad.class);
-                intent.putExtra("fname",fnameString);
-                intent.putExtra("lname",lnameString);
-                intent.putExtra("address",addressString);
-                intent.putExtra("phone",phoneString);
-                intent.putExtra("email",emailString);
-                intent.putExtra("checkin",checkinDate);
-                intent.putExtra("checkout",checkoutDate);
-                intent.putExtra("gender",sexString);
-                intent.putExtra("imageURL",imageURL);
-                intent.putExtra("counter1",Integer.toString(counter1));
-                intent.putExtra("counter2",Integer.toString(counter2));
-                intent.putExtra("childData",childData);
-                startActivity(intent);
-                //dref.push().setValue(new regisObj(fnameString,lnameString,emailString,addressString,sexString,phoneString,Integer.toString(counter1),Integer.toString(counter2),"0","0",imageURL));
 
+                boolean checker = true;
+                if(fnameString.isEmpty()){
+                    fname.setError("First Name is Required");
+                    fname.requestFocus();
+                    checker = false;
+                }
 
-                //Toast.makeText(registrationForm.this, "Submitted", Toast.LENGTH_SHORT).show();
+                if(lnameString.isEmpty()){
+                    lname.setError("Last Name is Required");
+                    lname.requestFocus();
+                    checker = false;
+                }
+
+                if(addressString.isEmpty()){
+                    address.setError("Address is Required");
+                    address.requestFocus();
+                    checker = false;
+                }
+
+                if(phoneString.isEmpty() || !Patterns.PHONE.matcher(phoneString).matches()){
+                    email.setError("Phone number is Required");
+                    email.requestFocus();
+                    checker = false;
+                }
+
+                if(emailString.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailString).matches()){
+                    email.setError("Email id is Required");
+                    email.requestFocus();
+                    checker = false;
+                }
+
+                if(checkinDate.isEmpty()){
+                    ci.setError("Check in date is Required");
+                    ci.requestFocus();
+                    checker = false;
+                }
+
+                if(checkoutDate.isEmpty()){
+                    co.setError("Check out date is Required");
+                    co.requestFocus();
+                    checker = false;
+                }
+
+                if(r1.isChecked() || r2.isChecked()){
+                    int selected =sex.getCheckedRadioButtonId();
+                    RadioButton gender=(RadioButton) findViewById(selected);
+                    sexString = gender.getText().toString();
+                }else{
+                    r1.setError("Gender is required");
+                    r2.setError("Gender is required");
+                    r1.requestFocus();
+                    r2.requestFocus();
+                }
+
+                if(checker){
+                    Intent intent = new Intent(getApplicationContext(),signaturePad.class);
+                    intent.putExtra("fname",fnameString);
+                    intent.putExtra("lname",lnameString);
+                    intent.putExtra("address",addressString);
+                    intent.putExtra("phone",phoneString);
+                    intent.putExtra("email",emailString);
+                    intent.putExtra("checkin",checkinDate);
+                    intent.putExtra("checkout",checkoutDate);
+                    intent.putExtra("gender",sexString);
+                    intent.putExtra("imageURL",imageURL);
+                    intent.putExtra("counter1",Integer.toString(counter1));
+                    intent.putExtra("counter2",Integer.toString(counter2));
+                    intent.putExtra("childData",childData);
+                    startActivity(intent);
+                }
+//                else{
+//                    Toast.makeText(activity, "Some filed is empty", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 
@@ -198,6 +259,7 @@ public class registrationForm extends AppCompatActivity {
                                 imageURL = url;
                                 Log.d("uploaded",url);
                                 pd.dismiss();
+                                done.setVisibility(View.VISIBLE);
                             }
                         });
                     }

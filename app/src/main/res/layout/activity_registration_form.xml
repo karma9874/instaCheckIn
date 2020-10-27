@@ -69,7 +69,7 @@
                 android:layout_below="@+id/fname"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:hint="Neeraj"
+                android:hint="John"
                 android:padding="5dp" />
 
             <EditText
@@ -80,7 +80,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@id/fnameedit"
-                android:hint="Singh"
+                android:hint="Smith"
                 android:padding="5dp" />
 
             <TextView
@@ -137,7 +137,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="15dp"
-                android:hint="nirajssingh18@gmail.com"
+                android:hint="john@xyz.com"
                 android:padding="5dp" />
 
             <TextView
@@ -160,7 +160,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="15dp"
-                android:hint="123456789"
+                android:hint="+91 56764234"
                 android:padding="5dp" />
 
             <TextView
@@ -183,7 +183,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="15dp"
-                android:hint="adddress input feild"
+                android:hint="mumbai maharashtra"
                 android:padding="5dp" />
 
             <TextView
@@ -316,6 +316,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="dd/mm/yy"
                 android:inputType="date" />
 
             <TextView
@@ -330,6 +331,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:hint="dd/mm/yy"
                 android:id="@+id/checkoutdate"
                 android:layout_marginTop="5dp"
                 android:layout_below="@id/checkinDate"
@@ -384,7 +386,15 @@
                 android:text="Submit"
                 />
 
-
+            <ImageView
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/verifyinfo"
+                android:layout_toRightOf="@+id/uploadbutton"
+                android:id="@+id/doneupload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/tick" />
 
 
         </RelativeLayout>
