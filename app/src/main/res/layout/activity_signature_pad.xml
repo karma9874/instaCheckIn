@@ -60,7 +60,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="save"
+            android:text="Submit"
             android:enabled="false" />
     </LinearLayout>
 

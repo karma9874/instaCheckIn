@@ -9,12 +9,84 @@
     <me.dm7.barcodescanner.zxing.ZXingScannerView
         android:id="@+id/scannerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+    </me.dm7.barcodescanner.zxing.ZXingScannerView>
 
+    <ImageView
+        android:id="@+id/logocontent"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="100dp"
+        android:elevation="6dp"
+        android:src="@mipmap/smallicon" />
+
+    <LinearLayout
+        android:paddingTop="60dp"
+        android:paddingBottom="30dp"
+        android:background="@drawable/bg"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/content"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/welcomebanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textColor="#343434"
+            android:text="Hi!, Welcome to"
+            />
+
+        <TextView
+            android:id="@+id/hotelname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textColor="#343434"
+            android:text="taj hotel"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/ba"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textColor="#343434"
+            android:text="Please fill out the check in form"
+            />
+
+        <Button
+            android:id="@+id/yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Take me there"/>
+
+        <Button
+            android:id="@+id/no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not the one looking for?"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ob"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="3dp"
+        android:background="@drawable/overbox"/>
 
     <TextView
         android:textColor="#ffffff"
-        android:text="Please Scan the QRCode from Website"
+        android:text="Please Scan the QRCode"
         android:id="@+id/text"
         android:layout_marginBottom="105dp"
         android:layout_centerHorizontal="true"

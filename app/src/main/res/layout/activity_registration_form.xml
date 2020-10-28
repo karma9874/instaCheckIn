@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="#F7F7F7">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,7 +12,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#F7F7F7">
 
 
             <TextView
@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="Registration Form"
+                android:text="Check In Form"
                 android:textSize="25dp" />
 
             <TextView
@@ -31,8 +31,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/banner"
                 android:layout_marginTop="15dp"
-                android:background="#2B2B2B"
-                android:fontFamily="sans-serif-medium"
+                android:background="#E6F1FA"
+                android:fontFamily="@font/cabin"
                 android:padding="5dp"
                 android:text="BASIC INFO"
                 android:textColor="#03A9F4"
@@ -45,9 +45,10 @@
                 android:layout_below="@+id/basicInfo"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
+                android:fontFamily="sans-serif-medium"
                 android:text="First Name"
-                android:textSize="15dp"
-                android:textStyle="bold" />
+                android:textColor="#000000"
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/lname"
@@ -58,17 +59,19 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="50dp"
                 android:layout_toRightOf="@id/fnameedit"
+                android:fontFamily="sans-serif-medium"
                 android:text="Last Name"
-                android:textSize="15dp"
-                android:textStyle="bold" />
+                android:textColor="#000000"
+                android:textSize="15dp" />
 
             <EditText
                 android:id="@+id/fnameedit"
-                android:layout_width="180dp"
+                android:layout_width="177dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fname"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
+                android:background="#ffffff"
                 android:hint="John"
                 android:padding="5dp" />
 
@@ -80,6 +83,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@id/fnameedit"
+                android:background="#ffffff"
                 android:hint="Smith"
                 android:padding="5dp" />
 
@@ -91,17 +95,19 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="50dp"
+                android:fontFamily="sans-serif-medium"
                 android:text="Gender"
-                android:textSize="15dp"
-                android:textStyle="bold" />
+                android:textColor="#000000"
+                android:textSize="15dp" />
 
             <RadioGroup
                 android:id="@+id/genderRadioGroup"
-                android:layout_width="match_parent"
+                android:layout_width="284dp"
+                android:layout_height="32dp"
                 android:layout_below="@id/fnameedit"
-                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/gender"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/maleRadioButton"
@@ -110,10 +116,10 @@
                     android:text="Male" />
 
                 <RadioButton
-                    android:layout_marginLeft="20dp"
                     android:id="@+id/femaleRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:text="Female" />
             </RadioGroup>
 
@@ -126,18 +132,19 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Email Address"
-                android:textStyle="bold" />
+                android:textColor="#000000" />
 
             <EditText
                 android:id="@+id/emailedit"
-                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/emailbanner"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="15dp"
+                android:background="#ffffff"
                 android:hint="john@xyz.com"
+                android:inputType="textEmailAddress"
                 android:padding="5dp" />
 
             <TextView
@@ -149,10 +156,9 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Phone Number"
-                android:textStyle="bold" />
+                android:textColor="#000000" />
 
             <EditText
-                android:inputType="phone"
                 android:id="@+id/phoneedit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -160,7 +166,9 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="15dp"
-                android:hint="+91 56764234"
+                android:background="#ffffff"
+                android:hint="+60 7612451232"
+                android:inputType="phone"
                 android:padding="5dp" />
 
             <TextView
@@ -172,10 +180,9 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Address"
-                android:textStyle="bold" />
+                android:textColor="#000000" />
 
             <EditText
-                android:inputType="textLongMessage"
                 android:id="@+id/addressedit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -183,7 +190,9 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="15dp"
-                android:hint="mumbai maharashtra"
+                android:background="#ffffff"
+                android:hint="Kuala Lumpur"
+                android:inputType="textMultiLine"
                 android:padding="5dp" />
 
             <TextView
@@ -192,10 +201,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/addressedit"
                 android:layout_marginTop="15dp"
-                android:background="#2B2B2B"
-                android:fontFamily="sans-serif-medium"
+                android:background="#E6F1FA"
+                android:fontFamily="@font/cabin"
                 android:padding="5dp"
-                android:text="Additional Members"
+                android:text="ADDITIONAL MEMBERS"
                 android:textColor="#03A9F4"
                 android:textSize="15dp" />
 
@@ -207,13 +216,13 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Adults"
-                android:textStyle="bold" />
+                android:text="Adult(s)"
+                android:textColor="#000000" />
 
             <ImageButton
                 android:id="@+id/plus1"
-                android:layout_width="36dp"
-                android:layout_height="33dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/additionalInfo"
                 android:layout_marginLeft="78dp"
                 android:layout_marginTop="3dp"
@@ -223,8 +232,8 @@
 
             <ImageButton
                 android:id="@+id/minus1"
-                android:layout_width="36dp"
-                android:layout_height="33dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/additionalInfo"
                 android:layout_marginLeft="38dp"
                 android:layout_marginTop="3dp"
@@ -239,26 +248,26 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Chidlren"
-                android:textStyle="bold" />
+                android:text="Chidlren(s)"
+                android:textColor="#000000" />
 
             <ImageButton
                 android:id="@+id/plus2"
-                android:layout_width="36dp"
-                android:layout_height="33dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/plus1"
                 android:layout_marginLeft="78dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/adultsInfo"
                 app:srcCompat="@drawable/minus" />
 
             <ImageButton
                 android:id="@+id/minus2"
-                android:layout_width="36dp"
-                android:layout_height="33dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/plus1"
                 android:layout_marginLeft="39dp"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/plus2"
                 app:srcCompat="@drawable/add" />
 
@@ -268,34 +277,32 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/childinfo"
                 android:layout_marginTop="15dp"
-                android:background="#2B2B2B"
-                android:fontFamily="sans-serif-medium"
+                android:background="#D9ECFB"
+                android:fontFamily="@font/cabin"
                 android:padding="5dp"
-                android:text="Stay Details"
+                android:text="STAY DETAILS"
                 android:textColor="#03A9F4"
                 android:textSize="15dp" />
 
             <TextView
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="13dp"
-                android:layout_below="@id/additionalInfo"
-                android:layout_toRightOf="@id/plus1"
                 android:id="@+id/counter1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
-                />
+                android:layout_below="@id/additionalInfo"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/plus1"
+                android:text="0" />
 
             <TextView
-                android:layout_marginLeft="15dp"
-                android:layout_below="@id/counter1"
                 android:id="@+id/counter2"
-                android:layout_marginTop="13dp"
-                android:layout_toRightOf="@id/plus2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
-                />
+                android:layout_below="@id/counter1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="13dp"
+                android:layout_toRightOf="@id/plus2"
+                android:text="0" />
 
             <TextView
                 android:id="@+id/checkindateinfo"
@@ -306,18 +313,20 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Check in Date"
-                android:textStyle="bold" />
+                android:textColor="#000000" />
 
             <EditText
-                android:layout_below="@id/checkinfo"
-                android:layout_toRightOf="@id/checkindateinfo"
                 android:id="@+id/checkinDate"
-                android:layout_marginLeft="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/checkinfo"
+                android:layout_marginLeft="50dp"
+                android:layout_toRightOf="@id/checkindateinfo"
                 android:ems="10"
+                android:focusable="false"
+                android:inputType="none"
                 android:hint="dd/mm/yy"
-                android:inputType="date" />
+                android:clickable="true" />
 
             <TextView
                 android:id="@+id/checkoutinfo"
@@ -325,22 +334,24 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/checkindateinfo"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="30dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Check out Date"
-                android:textStyle="bold" />
+                android:textColor="#000000" />
 
             <EditText
-                android:hint="dd/mm/yy"
                 android:id="@+id/checkoutdate"
-                android:layout_marginTop="5dp"
-                android:layout_below="@id/checkinDate"
-                android:layout_toRightOf="@id/checkindateinfo"
-                android:layout_marginLeft="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/checkinDate"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/checkindateinfo"
                 android:ems="10"
-                android:inputType="date" />
+                android:focusable="false"
+                android:hint="dd/mm/yy"
+                android:clickable="true"
+                android:inputType="none" />
 
             <TextView
                 android:id="@+id/verifyinfo"
@@ -348,10 +359,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/checkoutdate"
                 android:layout_marginTop="15dp"
-                android:background="#2B2B2B"
-                android:fontFamily="sans-serif-medium"
+                android:background="#E6F1FA"
+                android:fontFamily="@font/cabin"
                 android:padding="5dp"
-                android:text="Verification"
+                android:text="VERIFICATION"
                 android:textColor="#03A9F4"
                 android:textSize="15dp" />
 
@@ -364,38 +375,64 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Upload ID Proof"
-                android:textStyle="bold" />
+                android:textColor="#000000" />
 
             <Button
                 android:id="@+id/uploadbutton"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/verifyinfo"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/upload"
+                android:layout_toRightOf="@id/uploadid"
+                android:text="Upload/Click" />
+
+            <ImageView
+                android:id="@+id/doneupload"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/verifyinfo"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/uploadbutton"
+                app:srcCompat="@drawable/tick" />
+
+            <TextView
+                android:id="@+id/passportNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/verifyinfo"
-                android:layout_toRightOf="@id/uploadid"
-                android:text="Upload/Click"
-                android:layout_marginLeft="40dp"
+                android:layout_below="@+id/uploadid"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Passport Number"
+                android:textColor="#000000" />
+
+
+            <EditText
+                android:id="@+id/passpoeredit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/uploadbutton"
+                android:layout_marginLeft="27dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/passportNumber"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="(optional)"
                 />
 
             <Button
                 android:id="@+id/savebutton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/uploadid"
+                android:layout_below="@+id/passpoeredit"
                 android:layout_marginTop="15dp"
+                android:background="@drawable/box"
                 android:gravity="center"
                 android:text="Submit"
-                />
-
-            <ImageView
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/verifyinfo"
-                android:layout_toRightOf="@+id/uploadbutton"
-                android:id="@+id/doneupload"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/tick" />
-
+                android:layout_marginBottom="10dp"/>
 
         </RelativeLayout>
 

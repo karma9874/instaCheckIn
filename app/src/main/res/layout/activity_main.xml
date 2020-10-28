@@ -4,40 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#01BBC1"
     tools:context=".MainActivity">
 
-    <Button
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="287dp"
+        android:layout_height="290dp"
+        android:layout_marginTop="120dp"
+        android:text="Search for a QR code nearby and scan the code to     Check In"
+        android:textColor="#ffffff"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.258"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
         android:id="@+id/qr_scanner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="QR_scanner"
+        android:layout_width="74dp"
+        android:layout_height="74dp"
+        android:layout_marginBottom="244dp"
+        android:background="#01BBC1"
+        android:src="@drawable/whitescanner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.089" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/qr_generate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="QR_ Generator"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qr_scanner"
-        app:layout_constraintVertical_bias="0.113" />
-
-    <ImageView
-        android:id="@+id/imageview"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginBottom="108dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

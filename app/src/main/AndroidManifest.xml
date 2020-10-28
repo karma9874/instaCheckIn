@@ -3,7 +3,7 @@
     package="com.application.customerapp">
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,16 +11,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
-        <activity android:name=".utils.registrationForm"></activity>
-        <activity android:name=".utils.signaturePad" />
-        <activity android:name=".utils.scannerActivity" />
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar">
+        <activity android:name=".splashScreen" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".utils.registrationForm" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".utils.signaturePad" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".utils.scannerActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".MainActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

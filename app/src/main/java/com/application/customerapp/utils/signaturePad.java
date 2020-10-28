@@ -31,7 +31,7 @@ public class signaturePad extends AppCompatActivity {
     Button mClearButton,mSaveButton;
     static String sigImage="";
 
-    String fname,lname,address,phone,email,checkin,checkout,gender,imageURL,counter1,counter2,childData;
+    String fname,lname,address,phone,email,checkin,checkout,gender,imageURL,counter1,counter2,childData,passport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class signaturePad extends AppCompatActivity {
          counter1 = getIntent().getStringExtra("counter1");
          counter2 = getIntent().getStringExtra("counter2");
         childData = getIntent().getStringExtra("childData");
+        passport = getIntent().getStringExtra("passport");
         signaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
             @Override
             public void onStartSigning() {
@@ -107,7 +108,7 @@ public class signaturePad extends AppCompatActivity {
                                     pd.dismiss();
                                     Log.d("adad",childData);
                                     DatabaseReference dref = FirebaseDatabase.getInstance().getReference("submissionForm").child(childData);
-                                    dref.push().setValue(new regisObj(fname,lname,email,address,gender,phone,counter1,counter2,checkin,checkout,imageURL,sigImage));
+                                    dref.push().setValue(new regisObj(fname,lname,email,address,gender,phone,counter1,counter2,checkin,checkout,imageURL,sigImage,passport));
                                     Toast.makeText(signaturePad.this, "Submitted", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY|Intent.FLAG_ACTIVITY_CLEAR_TOP);

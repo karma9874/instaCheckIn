@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -38,13 +40,16 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 public class registrationForm extends AppCompatActivity {
 
 
     Button submit,uploadbutton;
-    EditText fname,lname,email,address,phone,ci,co;
+    EditText fname,lname,email,address,phone,ci,co,passpoeredit;
     RadioGroup sex;
     TextView adults,child;
     static int counter1 = 0;
@@ -64,7 +69,7 @@ public class registrationForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_form);
-
+        getWindow().setStatusBarColor(getResources().getColor(R.color.teal_200));
         adults = findViewById(R.id.counter1);
         child = findViewById(R.id.counter2);
         ci = findViewById(R.id.checkinDate);
@@ -89,7 +94,54 @@ public class registrationForm extends AppCompatActivity {
 
         uploadbutton = findViewById(R.id.uploadbutton);
 
+        passpoeredit = findViewById(R.id.passpoeredit);
+
         done.setVisibility(View.INVISIBLE);
+
+        final Calendar myCalendar = Calendar.getInstance();
+
+        ci.setClickable(true);
+        co.setClickable(true);
+        DatePickerDialog.OnDateSetListener checkin = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel(ci,myCalendar);
+            }
+        };
+
+        DatePickerDialog.OnDateSetListener checkout = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel(co,myCalendar);
+            }
+        };
+
+        ci.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(registrationForm.this, checkin, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        co.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(registrationForm.this, checkout, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
         uploadbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +155,9 @@ public class registrationForm extends AppCompatActivity {
         plus1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                counter1=counter1-1;
+                if(counter1>0){
+                    counter1=counter1-1;
+                }
                 adults.setText(Integer.toString(counter1));
             }
         });
@@ -111,7 +165,9 @@ public class registrationForm extends AppCompatActivity {
         plus2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                counter2 = counter2-1;
+                if(counter2>0){
+                    counter2 = counter2-1;
+                }
                 child.setText(Integer.toString(counter2));
             }
         });
@@ -147,16 +203,16 @@ public class registrationForm extends AppCompatActivity {
                 String emailString = email.getText().toString();
                 String checkinDate = ci.getText().toString();
                 String checkoutDate = co.getText().toString();
-
-
-                Log.d("adadad",fnameString+lnameString+addressString+phoneString);
-
-
+                String passportString = passpoeredit.getText().toString();
                 boolean checker = true;
                 if(fnameString.isEmpty()){
                     fname.setError("First Name is Required");
                     fname.requestFocus();
                     checker = false;
+                }
+
+                if(passportString.isEmpty()){
+                    passportString = "null";
                 }
 
                 if(lnameString.isEmpty()){
@@ -172,8 +228,8 @@ public class registrationForm extends AppCompatActivity {
                 }
 
                 if(phoneString.isEmpty() || !Patterns.PHONE.matcher(phoneString).matches()){
-                    email.setError("Phone number is Required");
-                    email.requestFocus();
+                    phone.setError("Phone number is Required");
+                    phone.requestFocus();
                     checker = false;
                 }
 
@@ -183,17 +239,17 @@ public class registrationForm extends AppCompatActivity {
                     checker = false;
                 }
 
-                if(checkinDate.isEmpty()){
-                    ci.setError("Check in date is Required");
-                    ci.requestFocus();
-                    checker = false;
-                }
-
-                if(checkoutDate.isEmpty()){
-                    co.setError("Check out date is Required");
-                    co.requestFocus();
-                    checker = false;
-                }
+//                if(checkinDate.isEmpty()){
+//                    ci.setError("Check in date is Required");
+//                    ci.requestFocus();
+//                    checker = false;
+//                }
+//
+//                if(checkoutDate.isEmpty()){
+//                    co.setError("Check out date is Required");
+//                    co.requestFocus();
+//                    checker = false;
+//                }
 
                 if(r1.isChecked() || r2.isChecked()){
                     int selected =sex.getCheckedRadioButtonId();
@@ -208,6 +264,7 @@ public class registrationForm extends AppCompatActivity {
 
                 if(checker){
                     Intent intent = new Intent(getApplicationContext(),signaturePad.class);
+//                    regisObj data = new regisObj(fnameString,lnameString,emailString,addressString,sexString,phoneString,Integer.toString(counter1),Integer.toString(counter2),checkinDate,checkoutDate,imageURL,"0");
                     intent.putExtra("fname",fnameString);
                     intent.putExtra("lname",lnameString);
                     intent.putExtra("address",addressString);
@@ -219,6 +276,9 @@ public class registrationForm extends AppCompatActivity {
                     intent.putExtra("imageURL",imageURL);
                     intent.putExtra("counter1",Integer.toString(counter1));
                     intent.putExtra("counter2",Integer.toString(counter2));
+                    intent.putExtra("passport",passportString);
+
+  //                  intent.putExtra("class",data);
                     intent.putExtra("childData",childData);
                     startActivity(intent);
                 }
@@ -242,11 +302,6 @@ public class registrationForm extends AppCompatActivity {
                 ProgressDialog pd = new ProgressDialog(this);
                 pd.setMessage("Uploading Image");
                 pd.show();
-
-//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//                photo.compress(Bitmap.CompressFormat.JPEG, 50, baos);
-//                byte[] imageData = baos.toByteArray();
-//                Log.d("imageData", String.valueOf(imageData.length));
                 fileRef = FirebaseStorage.getInstance().getReference().child("uploads").child(System.currentTimeMillis()+".jpeg");
                 Uri uri = new heplers().getImageUri(getApplicationContext(),photo);
                 fileRef.putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
@@ -264,9 +319,7 @@ public class registrationForm extends AppCompatActivity {
                         });
                     }
                 });
-                //Toast.makeText(activity, "noice", Toast.LENGTH_SHORT).show();
             }
-            //imageView.setImageBitmap(photo);
         }
     }
 
@@ -283,6 +336,12 @@ public class registrationForm extends AppCompatActivity {
         }else{
             return true;
         }
+    }
+
+    private void updateLabel(EditText ed,Calendar calendar) {
+        String myFormat = "dd/MM/yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        ed.setText(sdf.format(calendar.getTime()));
     }
 
 

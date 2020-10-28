@@ -1,6 +1,7 @@
 package com.application.customerapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,20 +32,16 @@ import static android.Manifest.permission_group.CAMERA;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int REQUEST_CAMERA = 1;
-    Activity activity;
-    Button scanner,generator;
+    ImageButton scanner;
     ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.teal_200));
         scanner = findViewById(R.id.qr_scanner);
-        generator = findViewById(R.id.qr_generate);
-        imageView = findViewById(R.id.imageview);
-
         scanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,30 +51,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        generator.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                QRCodeButton("data");
-            }
-        });
-    }
 
-    public void QRCodeButton(String data){
-        QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        try {
-            BitMatrix bitMatrix = qrCodeWriter.encode(data, BarcodeFormat.QR_CODE, 200, 200);
-            Bitmap bitmap = Bitmap.createBitmap(200, 200, Bitmap.Config.RGB_565);
-            for (int x = 0; x<200; x++){
-                for (int y=0; y<200; y++){
-                    bitmap.setPixel(x,y,bitMatrix.get(x,y)? Color.BLACK : Color.WHITE);
-                }
-            }
-            imageView.setImageBitmap(bitmap);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
-
     public  boolean verfiycameraperms() {
         int perms = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
 
