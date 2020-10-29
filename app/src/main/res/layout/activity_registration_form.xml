@@ -21,6 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:fontFamily="@font/cabin"
                 android:gravity="center"
                 android:text="Check In Form"
                 android:textSize="25dp" />
@@ -431,6 +432,7 @@
                 android:layout_marginTop="15dp"
                 android:background="@drawable/box"
                 android:gravity="center"
+                android:elevation="10dp"
                 android:text="Submit"
                 android:layout_marginBottom="10dp"/>
 

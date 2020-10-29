@@ -40,13 +40,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
 public class registrationForm extends AppCompatActivity {
-
 
     Button submit,uploadbutton;
     EditText fname,lname,email,address,phone,ci,co,passpoeredit;
@@ -62,6 +63,7 @@ public class registrationForm extends AppCompatActivity {
     RadioButton r1,r2;
     String sexString;
     ImageView done;
+    boolean idproofchecker = true;
     private static final int CAMERA_REQUEST = 420;
 
     ImageButton plus1,plus2,minus1,minus2;
@@ -188,7 +190,7 @@ public class registrationForm extends AppCompatActivity {
             }
         });
 
-         childData = getIntent().getStringExtra("childData");
+        childData = getIntent().getStringExtra("childData");
         dref = FirebaseDatabase.getInstance().getReference("submissionForm").child(childData);
 
 
@@ -204,6 +206,16 @@ public class registrationForm extends AppCompatActivity {
                 String checkinDate = ci.getText().toString();
                 String checkoutDate = co.getText().toString();
                 String passportString = passpoeredit.getText().toString();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date date1 = null,date2=null;
+                try {
+                     date1 = sdf.parse(checkinDate);
+                     date2 = sdf.parse(checkoutDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
                 boolean checker = true;
                 if(fnameString.isEmpty()){
                     fname.setError("First Name is Required");
@@ -239,17 +251,16 @@ public class registrationForm extends AppCompatActivity {
                     checker = false;
                 }
 
-//                if(checkinDate.isEmpty()){
-//                    ci.setError("Check in date is Required");
-//                    ci.requestFocus();
-//                    checker = false;
-//                }
-//
-//                if(checkoutDate.isEmpty()){
-//                    co.setError("Check out date is Required");
-//                    co.requestFocus();
-//                    checker = false;
-//                }
+                if(date1!=null && date2 !=null && date1.after(date2)){
+                    ci.setError("Valid Date is required");
+                    co.setError("Valid Date is required");
+                    ci.requestFocus();
+                    co.requestFocus();
+                }
+                if(idproofchecker){
+                    uploadbutton.setError("ID Proof is required");
+                    uploadbutton.requestFocus();
+                }
 
                 if(r1.isChecked() || r2.isChecked()){
                     int selected =sex.getCheckedRadioButtonId();
@@ -277,30 +288,24 @@ public class registrationForm extends AppCompatActivity {
                     intent.putExtra("counter1",Integer.toString(counter1));
                     intent.putExtra("counter2",Integer.toString(counter2));
                     intent.putExtra("passport",passportString);
-
-  //                  intent.putExtra("class",data);
                     intent.putExtra("childData",childData);
                     startActivity(intent);
                 }
-//                else{
-//                    Toast.makeText(activity, "Some filed is empty", Toast.LENGTH_SHORT).show();
-//                }
             }
         });
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             if(photo!=null){
-
+                idproofchecker = false;
                 ProgressDialog pd = new ProgressDialog(this);
                 pd.setMessage("Uploading Image");
+                pd.setCancelable(false);
                 pd.show();
                 fileRef = FirebaseStorage.getInstance().getReference().child("uploads").child(System.currentTimeMillis()+".jpeg");
                 Uri uri = new heplers().getImageUri(getApplicationContext(),photo);

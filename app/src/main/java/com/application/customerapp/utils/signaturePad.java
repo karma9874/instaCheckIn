@@ -25,6 +25,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class signaturePad extends AppCompatActivity {
 
     SignaturePad signaturePad;
@@ -109,10 +111,19 @@ public class signaturePad extends AppCompatActivity {
                                     Log.d("adad",childData);
                                     DatabaseReference dref = FirebaseDatabase.getInstance().getReference("submissionForm").child(childData);
                                     dref.push().setValue(new regisObj(fname,lname,email,address,gender,phone,counter1,counter2,checkin,checkout,imageURL,sigImage,passport));
-                                    Toast.makeText(signaturePad.this, "Submitted", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY|Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
+                                    new SweetAlertDialog(signaturePad.this,SweetAlertDialog.SUCCESS_TYPE)
+                                            .setTitleText("Form Submitted successfully")
+                                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                @Override
+                                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    startActivity(intent);
+                                                }
+                                            })
+                                            .show();
+
+
                                 }
                             });
                         }
