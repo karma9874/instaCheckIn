@@ -44,6 +44,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.regex.Pattern;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class registrationForm extends AppCompatActivity {
 
@@ -203,6 +206,24 @@ public class registrationForm extends AppCompatActivity {
                 String emailString = email.getText().toString();
                 String checkinDate = ci.getText().toString();
                 String checkoutDate = co.getText().toString();
+                Log.e("date", checkinDate);
+                Log.e("date", checkoutDate);
+
+                /* dates checker parameter uncomment it !
+                String[] cin =  checkinDate.split("/");
+                String[] cout =  checkoutDate.split("/");
+                boolean dates= false;
+                dateCheck(dates,Integer.parseInt(cin[0]),Integer.parseInt(cout[0]),Integer.parseInt(cin[1]),Integer.parseInt(cout[1]),Integer.parseInt(cin[2]),Integer.parseInt(cout[2]));
+                if(!dates)
+                {
+                    ci.setError("enter valid checkin and checkout dates");
+                    ci.requestFocus();
+                }
+
+                 */
+
+
+
                 String passportString = passpoeredit.getText().toString();
                 boolean checker = true;
                 if(fnameString.isEmpty()){
@@ -239,17 +260,6 @@ public class registrationForm extends AppCompatActivity {
                     checker = false;
                 }
 
-//                if(checkinDate.isEmpty()){
-//                    ci.setError("Check in date is Required");
-//                    ci.requestFocus();
-//                    checker = false;
-//                }
-//
-//                if(checkoutDate.isEmpty()){
-//                    co.setError("Check out date is Required");
-//                    co.requestFocus();
-//                    checker = false;
-//                }
 
                 if(r1.isChecked() || r2.isChecked()){
                     int selected =sex.getCheckedRadioButtonId();
@@ -289,6 +299,29 @@ public class registrationForm extends AppCompatActivity {
         });
 
     }
+
+    /*   dates checker functio
+    private  static  boolean dateCheck(boolean result,int d1,int d2, int m1,int m2,int y1,int y2)
+    {
+        Log.e("date",d1+"") ;
+        Log.e("date",d2+"") ;
+        Log.e("date",m1+"") ;
+        Log.e("date",m2+"") ;
+        Log.e("date",y1+"") ;
+        Log.e("date",y2+"") ;
+
+        if(y2<y1)
+     {
+         return false;
+     }
+     else if(y1<=y2 && m1>m2)
+         return false;
+     else if(y1<=y2 && m1<=m2 && d1>d2)
+         return false;
+     return true;
+    }
+
+     */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
