@@ -27,7 +27,6 @@ public class notificationService  extends FirebaseMessagingService {
         }
     }
 
-
     private void showNotification(String title, String message) {
 
         Intent intent = new Intent(this, splashScreen.class);
