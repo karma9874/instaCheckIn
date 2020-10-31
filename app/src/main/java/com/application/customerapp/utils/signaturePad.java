@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -110,7 +111,7 @@ public class signaturePad extends AppCompatActivity {
                                     pd.dismiss();
                                     Log.d("adad",childData);
                                     DatabaseReference dref = FirebaseDatabase.getInstance().getReference("submissionForm").child(childData);
-                                    dref.push().setValue(new regisObj(fname,lname,email,address,gender,phone,counter1,counter2,checkin,checkout,imageURL,sigImage,passport));
+                                    dref.push().setValue(new regisObj(fname,lname,email,address,gender,phone,counter1,counter2,checkin,checkout,imageURL,sigImage,passport, FirebaseInstanceId.getInstance().getToken()));
                                     new SweetAlertDialog(signaturePad.this,SweetAlertDialog.SUCCESS_TYPE)
                                             .setTitleText("Form Submitted successfully")
                                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
@@ -122,8 +123,6 @@ public class signaturePad extends AppCompatActivity {
                                                 }
                                             })
                                             .show();
-
-
                                 }
                             });
                         }

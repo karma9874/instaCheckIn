@@ -9,13 +9,11 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -39,16 +37,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.ByteArrayOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.regex.Pattern;
-import java.util.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class registrationForm extends AppCompatActivity {
 
@@ -282,6 +275,7 @@ public class registrationForm extends AppCompatActivity {
                 }
 
                 if(checker){
+                    Toast.makeText(getApplicationContext(), "Please Sign", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(),signaturePad.class);
 //                    regisObj data = new regisObj(fnameString,lnameString,emailString,addressString,sexString,phoneString,Integer.toString(counter1),Integer.toString(counter2),checkinDate,checkoutDate,imageURL,"0");
                     intent.putExtra("fname",fnameString);

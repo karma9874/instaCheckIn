@@ -6,30 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".splashScreen"
     android:background="#000000"
+    android:orientation="vertical"
     >
 
     <ImageView
+        android:foregroundGravity="center"
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="55dp"
         app:srcCompat="@drawable/logo" />
 
     <TextView
+        android:layout_marginTop="-300dp"
+        android:layout_below="@+id/imageView"
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="277dp"
         android:fontFamily="@font/audiowide"
         android:text="instaCheckIn"
         android:textColor="#ffffff"
-        android:textSize="50dp" />
+        android:textSize="50sp" />
 
 
 </RelativeLayout>

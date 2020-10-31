@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class splashScreen extends AppCompatActivity {
 
@@ -14,7 +17,7 @@ public class splashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         getWindow().setStatusBarColor(getResources().getColor(R.color.teal_200));
 
-
+        Log.d("Firebase", "token "+ FirebaseInstanceId.getInstance().getToken());
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
