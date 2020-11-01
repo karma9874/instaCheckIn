@@ -113,7 +113,7 @@ public class signaturePad extends AppCompatActivity {
                                     DatabaseReference dref = FirebaseDatabase.getInstance().getReference("submissionForm").child(childData);
                                     dref.push().setValue(new regisObj(fname,lname,email,address,gender,phone,counter1,counter2,checkin,checkout,imageURL,sigImage,passport, FirebaseInstanceId.getInstance().getToken()));
                                     new SweetAlertDialog(signaturePad.this,SweetAlertDialog.SUCCESS_TYPE)
-                                            .setTitleText("Form Submitted successfully")
+                                            .setTitleText("Form Submitted, please wait for a notification for your room key !")
                                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                                 @Override
                                                 public void onClick(SweetAlertDialog sweetAlertDialog) {
