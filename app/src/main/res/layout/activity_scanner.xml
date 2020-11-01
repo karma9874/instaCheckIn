@@ -5,28 +5,19 @@
     android:orientation="vertical"
     >
 
-
     <me.dm7.barcodescanner.zxing.ZXingScannerView
         android:id="@+id/scannerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </me.dm7.barcodescanner.zxing.ZXingScannerView>
 
-    <ImageView
-        android:id="@+id/logocontent"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="100dp"
-        android:elevation="6dp"
-        android:src="@mipmap/smallicon" />
 
     <LinearLayout
+        android:layout_centerHorizontal="true"
         android:paddingTop="60dp"
         android:paddingBottom="30dp"
         android:background="@drawable/bg"
-        android:layout_marginTop="150dp"
-        android:layout_marginLeft="30dp"
+        android:layout_centerVertical="true"
         android:id="@+id/content"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
@@ -39,11 +30,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="22sp"
+            android:layout_gravity="center_horizontal"
             android:textColor="#343434"
             android:text="Hi!, Welcome to"
             />
 
         <TextView
+            android:layout_gravity="center_horizontal"
             android:id="@+id/hotelname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,6 +52,7 @@
             android:layout_height="wrap_content"
             android:textSize="22sp"
             android:textColor="#343434"
+            android:layout_gravity="center"
             android:text="Please fill out the check in form"
             />
 
@@ -67,6 +61,7 @@
             android:background="@drawable/box"
             android:id="@+id/yes"
             android:elevation="10dp"
+            android:layout_gravity="center_horizontal"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:text="Take me there"/>
@@ -76,11 +71,22 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/box"
             android:id="@+id/no"
+            android:layout_gravity="center_horizontal"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:text="Not the one looking for?"
             />
     </LinearLayout>
+
+    <ImageView
+        android:layout_marginBottom="-50dp"
+        android:layout_above="@+id/content"
+        android:id="@+id/logocontent"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="150dp"
+        android:elevation="6dp"
+        android:src="@mipmap/smallicon" />
 
     <LinearLayout
         android:id="@+id/ob"
@@ -94,6 +100,7 @@
         android:textColor="#ffffff"
         android:text="Please Scan the QRCode"
         android:id="@+id/text"
+        android:gravity="center_horizontal"
         android:layout_marginBottom="105dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"

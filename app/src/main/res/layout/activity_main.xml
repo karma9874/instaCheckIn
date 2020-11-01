@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,30 +7,78 @@
     android:background="#01BBC1"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="287dp"
-        android:layout_height="290dp"
+    <RelativeLayout
+        android:id="@+id/rl"
         android:layout_marginTop="120dp"
-        android:text="Search for a QR code nearby and scan the code to     Check In"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/t1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search for a QR"
         android:textColor="#ffffff"
         android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
-    <ImageButton
+        <TextView
+            android:layout_below="@+id/t1"
+            android:id="@+id/t2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="code nearby"
+            android:textColor="#ffffff"
+            android:textSize="40sp"
+            />
+        <TextView
+            android:layout_below="@+id/t2"
+            android:id="@+id/t3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="and scan"
+            android:textColor="#ffffff"
+            android:textSize="40sp"
+            />
+        <TextView
+            android:layout_below="@+id/t3"
+            android:id="@+id/t4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="the code to"
+            android:textColor="#ffffff"
+            android:textSize="40sp"
+            />
+        <TextView
+            android:layout_below="@+id/t4"
+            android:id="@+id/t5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check In"
+            android:textColor="#ffffff"
+            android:textSize="40sp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="80dp"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/rl"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content">
+
+        <ImageButton
         android:id="@+id/qr_scanner"
         android:layout_width="74dp"
         android:layout_height="74dp"
-        android:layout_marginBottom="244dp"
         android:background="#01BBC1"
         android:src="@drawable/whitescanner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+    </RelativeLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

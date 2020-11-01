@@ -11,6 +11,7 @@
         android:label="instaCheckIn"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:screenOrientation="portrait"
         android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar">
         <activity android:name=".splashScreen" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -31,7 +32,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
 
         <meta-data
             android:name="preloaded_fonts"
