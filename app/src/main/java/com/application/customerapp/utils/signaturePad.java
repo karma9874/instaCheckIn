@@ -111,7 +111,7 @@ public class signaturePad extends AppCompatActivity {
                                     pd.dismiss();
                                     Log.d("adad",childData);
                                     DatabaseReference dref = FirebaseDatabase.getInstance().getReference("submissionForm").child(childData);
-                                    dref.push().setValue(new regisObj(fname,lname,email,address,gender,phone,counter1,counter2,checkin,checkout,imageURL,sigImage,passport, FirebaseInstanceId.getInstance().getToken()));
+                                    dref.push().setValue(new regisObj(fname,lname,email,address,gender,phone,counter1,counter2,checkin,checkout,imageURL,sigImage,passport, FirebaseInstanceId.getInstance().getToken(),String.valueOf(System.currentTimeMillis())));
                                     new SweetAlertDialog(signaturePad.this,SweetAlertDialog.SUCCESS_TYPE)
                                             .setTitleText("Form Submitted, please wait for a notification for your room key !")
                                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
