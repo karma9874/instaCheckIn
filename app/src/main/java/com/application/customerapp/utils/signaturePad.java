@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.application.customerapp.MainActivity;
 import com.application.customerapp.R;
@@ -59,7 +58,6 @@ public class signaturePad extends AppCompatActivity {
         signaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
             @Override
             public void onStartSigning() {
-                //Toast.makeText(getApplicationContext(), "OnStartSigning", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -127,9 +125,6 @@ public class signaturePad extends AppCompatActivity {
                             });
                         }
                     });
-                    //
-
-
                 }
             }
         });

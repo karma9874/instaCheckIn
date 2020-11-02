@@ -2,23 +2,16 @@ package com.application.customerapp.utils;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.application.customerapp.R;
 import com.google.firebase.database.DataSnapshot;
@@ -31,8 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
-
-import static android.Manifest.permission_group.CAMERA;
 
 public class scannerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler{
 
@@ -61,10 +52,6 @@ public class scannerActivity extends AppCompatActivity implements ZXingScannerVi
         text = findViewById(R.id.text);
         hotelname  = findViewById(R.id.hotelname);
         obj = new ArrayList<>();
-//        fromback = AnimationUtils.loadAnimation(this,R.anim.fromback);
-//        fromnothing = AnimationUtils.loadAnimation(this,R.anim.logo);
-//        content.setAlpha(0);
-//        ob.setAlpha(0);
         content.setVisibility(View.INVISIBLE);
         ob.setVisibility(View.INVISIBLE);
         imageView.setVisibility(View.INVISIBLE);

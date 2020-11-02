@@ -1,6 +1,5 @@
 package com.application.customerapp;
 
-import android.app.LauncherActivity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
