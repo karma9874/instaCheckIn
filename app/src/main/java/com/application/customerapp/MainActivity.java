@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.application.customerapp.utils.registrationForm;
 import com.application.customerapp.utils.scannerActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getWindow().setStatusBarColor(getResources().getColor(R.color.teal_200));
         scanner = findViewById(R.id.qr_scanner);
+        registrationForm.counter1 = 0;
+        registrationForm.counter2 = 0;
         scanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

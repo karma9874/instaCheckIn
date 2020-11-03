@@ -49,8 +49,8 @@ public class registrationForm extends AppCompatActivity {
     EditText fname,lname,email,address,phone,ci,co,passpoeredit;
     RadioGroup sex;
     TextView adults,child;
-    static int counter1 = 0;
-    static int counter2 = 0;
+    public static int counter1 = 0;
+    public static int counter2 = 0;
     Activity activity = this;
     StorageReference fileRef;
     DatabaseReference dref;
