@@ -3,6 +3,7 @@ package com.application.customerapp.utils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
@@ -67,6 +68,7 @@ public class registrationForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_form);
+
         getWindow().setStatusBarColor(getResources().getColor(R.color.teal_200));
         adults = findViewById(R.id.counter1);
         child = findViewById(R.id.counter2);

@@ -2,6 +2,7 @@ package com.application.customerapp.utils;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,6 +44,8 @@ public class scannerActivity extends AppCompatActivity implements ZXingScannerVi
         getWindow().setStatusBarColor(getResources().getColor(R.color.teal_200));
         scannerView = (ZXingScannerView) findViewById(R.id.scannerview);
         datalist = new ArrayList();
+
+
 
         yes = findViewById(R.id.yes);
         no = findViewById(R.id.no);
