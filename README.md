@@ -1,7 +1,7 @@
 # InstaCheckIn
 
 <p align="center">
-  <img src="https://github.com/karma9874/instaCheckIn/blob/main/Images/logo.JPG"/>
+  <img src="https://github.com/karma9874/instaCheckIn/blob/main/Images/logo.jpg"/>
 </p>
 
 ## Demo 
