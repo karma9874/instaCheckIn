@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -55,6 +56,8 @@ public class signaturePad extends AppCompatActivity {
          counter2 = getIntent().getStringExtra("counter2");
         childData = getIntent().getStringExtra("childData");
         passport = getIntent().getStringExtra("passport");
+        getIntent().removeExtra("fname");
+
         signaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
             @Override
             public void onStartSigning() {
@@ -115,9 +118,11 @@ public class signaturePad extends AppCompatActivity {
                                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                                 @Override
                                                 public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY|Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                    startActivity(intent);
+                                                    //Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                                    //intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    //startActivity(intent);
+
+                                                    payUsingUpi("2500","fake@okaxis","karma","note");
                                                 }
                                             })
                                             .show();
@@ -128,8 +133,25 @@ public class signaturePad extends AppCompatActivity {
                 }
             }
         });
-
-
-
+        
     }
+
+    public void payUsingUpi(String amount,String upiId,String name,String note){
+
+        String UPI = "upi://pay?pa=" + upiId + "&pn=" + name +"&am=" + amount + "&cu=INR".replace(" ", "+");
+
+//        Uri uri = Uri.parse("upi://pay").buildUpon()
+//                .appendQueryParameter("pa", upiId)
+//                .appendQueryParameter("am", amount)
+//                .appendQueryParameter("cu", "INR")
+//                .build();
+        Intent payUPI = new Intent();
+        payUPI.setAction(Intent.ACTION_VIEW);
+        payUPI.setData(Uri.parse(UPI));
+        Intent chooser = Intent.createChooser(payUPI, "Pay with...");
+        startActivityForResult(chooser, 1, null);
+        //upiPayIntent.data = uri;
+    }
+
+
 }

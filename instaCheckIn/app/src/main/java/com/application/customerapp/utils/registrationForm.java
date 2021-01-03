@@ -279,6 +279,8 @@ public class registrationForm extends AppCompatActivity {
                 if(checker){
                     Toast.makeText(getApplicationContext(), "Please Sign", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(),signaturePad.class);
+
+                    
                     intent.putExtra("fname",fnameString);
                     intent.putExtra("lname",lnameString);
                     intent.putExtra("address",addressString);
